@@ -16,4 +16,7 @@ n1 <- nPlot(Freq ~ Hair, group  = "Eye", type = "multiBarChart",
 
 #Outputs n1.html file, which has to be cleaned up slightly to include http: before each "//" ran
 #into a few minor bugs because of the absence
+
+#prints chart out to console
+n1$print("Chart1")
 n1$save("n1.html", cdn = T)

@@ -1,0 +1,1 @@
+Navigate to Directory in R and type runApp(). Requires a server.R and ui.R file to work

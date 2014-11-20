@@ -1,0 +1,35 @@
+---
+title: "Classification of Tree of Iris Dataset"
+output: html_document
+---
+
+```{r}
+data(iris)
+library(ggplot2)
+library(caret)
+inTrain <- createDataPartition(y=iris$Species, p = 0.7, list = F)
+training <- iris[inTrain,]
+test <- iris[-inTrain,]
+dim(training); dim(test)
+```
+
+You can also embed plots, for example:
+
+```{r}
+qplot(Petal.Width, Sepal.Width, colour = Species, data = training)
+```
+
+```{r}
+mod <- train(Species~., method="rpart", data=training)
+plot(mod$finalModel, uniform = T, main = "Classification Tree")
+text(mod$finalModel, use.n = T, all = T, cex= .8)
+```
+
+```{r}
+library(rattle)
+fancyRpartPlot(mod$finalModel)
+```
+
+```{r}
+predict(mod, test)
+```
